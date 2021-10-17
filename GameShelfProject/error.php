@@ -1,0 +1,1 @@
+<?php echo "There was an error, please try again.";

@@ -1,0 +1,781 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* COLORS */
+  /* Grays */
+  --color-gray-light: #444;
+  --color-gray-mid: #333;
+  --color-gray-dark: #222;
+  --color-gray-verydark: #111;
+
+  /* Shadows */
+  --shadow-mid: 0 0 10px #303030;
+  --shadow-dark: 0 0 10px #202020;
+
+  /* Accents */
+  --accent-color-main: #333;
+  --accent-color-highlight: #333;
+  --accent-color-transparent: #333;
+
+  /* TEXT */
+  /* Font Weight */
+  --font-weight-thin: 200;
+  --font-weight-standard: 400;
+  --font-weight-bold: 700;
+
+  /* Font Color */
+  --font-color-light: #fff;
+  --font-color-mid: #ccc;
+  --font-color-middark: #aaa;
+  --font-color-dark: #000;
+  /* Font Size */
+  --font-size-small: 1.8rem;
+  --font-size-mid: 2.2rem;
+  --font-size-large: 3rem;
+  --font-size-huge: 5rem;
+
+  /* MISC. STYLING */
+  --border-radius-main: 0.5rem;
+  --standard-transition-speed: 200ms;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--color-gray-dark);
+  color: var(--font-color-mid);
+  font-family: "Raleway", sans-serif;
+  font-size: var(--font-size-large);
+  position: relative;
+  user-select: none;
+}
+
+/* These elements need inherit to be set manually */
+input,
+button {
+  font-family: inherit;
+}
+
+button {
+  color: var(--font-color-light);
+}
+
+/* Navigation Styles */
+.navigation {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: var(--color-gray-mid);
+  box-shadow: var(--shadow-dark);
+  z-index: 2;
+}
+
+.heading-primary {
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-thin);
+  text-transform: uppercase;
+  user-select: none;
+}
+.navigation-controls-container {
+  display: flex;
+}
+
+.add-shelf-form {
+  box-shadow: var(--shadow-dark);
+}
+.add-shelf-input {
+  color: var(--font-color-mid);
+  border: none;
+  font-size: var(--font-size-mid);
+  border-radius: 5px 0 0 5px;
+  padding: 1rem;
+  background-color: var(--color-gray-light);
+}
+
+.add-shelf-button {
+  background-color: var(--accent-color-main);
+  padding: 1rem;
+  font-size: var(--font-size-mid);
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: all var(--standard-transition-speed);
+  border: none;
+}
+
+.add-shelf-button:hover {
+  background-color: var(--accent-color-highlight);
+}
+
+.logout-button {
+  position: absolute;
+  transform: translateY(10px);
+  right: 0;
+  bottom: 0;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-bold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background-color: var(--accent-color-main);
+  border-radius: var(--border-radius-main);
+  padding: 1rem 1.5rem;
+  transition: all var(--standard-transition-speed);
+}
+
+.logout-button:hover {
+  background-color: var(--accent-color-highlight);
+}
+
+.logout-icon {
+  margin-right: 0.5rem;
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.user-settings-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: var(--border-radius-main);
+  cursor: pointer;
+  background-color: var(--accent-color-main);
+  padding: 0.5rem 1rem;
+  margin-left: 3rem;
+  transition: all var(--standard-transition-speed);
+}
+
+.user-settings-button:hover {
+  background-color: var(--accent-color-highlight);
+}
+
+.user-settings-icon-1 {
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+.user-settings-icon-2 {
+  height: 2.4rem;
+  width: 2.4rem;
+  animation-name: fadein;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+}
+.shelf-container {
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 10rem;
+}
+
+.shelf {
+  display: flex;
+  flex-direction: row;
+  margin-top: 4rem;
+  width: 95%;
+  height: 100%;
+  background-color: var(--color-gray-mid);
+  align-items: flex-start;
+  justify-content: left;
+  position: relative;
+  box-shadow: var(--shadow-dark);
+  border-radius: var(--border-radius-main);
+}
+
+.shelf-data {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  padding: 0.2rem;
+  align-items: flex-start;
+}
+
+.game {
+  position: relative;
+  height: 16rem;
+  max-width: 100%;
+  text-align: center;
+  font-size: var(--font-size-mid);
+  width: 16rem;
+  margin: 1rem 1.1rem;
+  background-color: var(--color-gray-light);
+  flex: 0 0 auto;
+  border-radius: var(--border-radius-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-game-button {
+  height: 16rem;
+  width: 16rem;
+  margin: 1rem 1.5rem 1rem 1rem;
+  font-size: var(--font-size-mid);
+  background-color: var(--accent-color-transparent);
+  color: var(--font-color-light);
+  flex: 0 0 auto;
+  border-radius: var(--border-radius-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--standard-transition-speed);
+  border: none;
+  text-decoration: none;
+}
+
+.add-game-button:hover {
+  background-color: var(--accent-color-highlight);
+  cursor: pointer;
+}
+
+.game-container {
+  display: flex;
+  width: 87%;
+  transition: all var(--standard-transition-speed);
+  background-color: var(--color-gray-mid);
+  overflow-y: hidden;
+  overflow-x: scroll;
+  border-left: 10px solid var(--accent-color-main);
+}
+
+.game-container-expanded {
+  display: flex;
+  min-height: 40vh;
+  flex-flow: row wrap;
+  transition: all var(--standard-transition-speed);
+}
+
+.shelf-title {
+  color: var(--font-color-light);
+  margin: 1rem;
+  text-align: center;
+  position: sticky;
+  font-size: var(--font-size-mid);
+  top: 0;
+  left: 0;
+  background-color: var(--color-gray-verydark);
+  padding: 0.7rem 1.2rem;
+  border-radius: var(--border-radius-main);
+  opacity: 80%;
+  width: 20rem;
+  min-width: 20rem;
+  max-height: 15rem;
+  word-wrap: break-word;
+  user-select: none;
+  box-shadow: var(--shadow-dark);
+  overflow: hidden;
+}
+.shelf-game-count {
+  color: var(--font-color-light);
+  margin: 0 1rem;
+  text-align: center;
+  position: sticky;
+  font-size: var(--font-size-mid);
+  top: 0;
+  left: 0;
+  background-color: var(--color-gray-verydark);
+  padding: 0.7rem 1.2rem;
+  border-radius: var(--border-radius-main);
+  opacity: 80%;
+  width: 20rem;
+  min-width: 20rem;
+  max-height: 15rem;
+  word-wrap: break-word;
+  user-select: none;
+  box-shadow: var(--shadow-dark);
+  overflow: hidden;
+}
+
+.shelf-open {
+  height: 32px;
+  width: 32px;
+  position: sticky;
+  background-color: var(--accent-color-main);
+  border: none;
+  border-radius: 5px 0 5px 0;
+  left: 0;
+  padding: 0.5rem;
+  letter-spacing: 0.75px;
+  cursor: pointer;
+  transition: all var(--standard-transition-speed);
+  box-shadow: var(--shadow-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shelf-open-icon {
+  width: 24px;
+  height: 24px;
+  transition: all var(--standard-transition-speed);
+  transform: rotate(180deg);
+}
+
+.shelf-open-icon-rotated {
+  transform: rotate(0deg);
+}
+.shelf-open:hover {
+  background-color: var(--accent-color-highlight);
+}
+
+.game-img {
+  max-height: 100%;
+  max-width: 100%;
+  box-shadow: var(--shadow-mid);
+  transition: all var(--standard-transition-speed);
+  user-select: none;
+  cursor: pointer;
+}
+
+.game-img:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-mid);
+}
+
+.game-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+.game-button {
+  height: 100%;
+  border: none;
+  background-color: var(--color-gray-light);
+}
+
+.game-title-button {
+  background-color: var(--color-gray-light);
+  height: 100%;
+  width: 100%;
+  font-size: var(--font-size-small);
+  border-radius: var(--border-radius-main);
+  border: none;
+  transition: all var(--standard-transition-speed);
+  cursor: pointer;
+}
+
+.game-title-button:hover {
+  background-color: var(--accent-color-transparent);
+  font-size: var(--font-size-mid);
+}
+
+.shelf {
+  border-right: 10px solid var(--accent-color-main);
+}
+
+.no-shelf {
+  width: 100%;
+  height: 6rem;
+  margin-right: 25rem;
+  font-weight: var(--font-weight-thin);
+  font-size: var(--font-size-huge);
+  text-align: right;
+  padding: 0.5rem 1rem;
+  user-select: none;
+
+  top: -300px;
+  opacity: 1;
+  animation-name: animatetop;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-direction: reverse;
+}
+
+.no-shelf-highlight {
+  font-weight: var(--font-weight-thin);
+  font-size: var(--font-size-huge);
+  color: var(--accent-color-main);
+}
+
+.no-shelf-icon {
+  height: 6rem;
+  width: 6rem;
+  color: var(--accent-color-main);
+  transform: rotate(100deg);
+}
+
+.add-game-modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all var(--standard-transition-speed);
+  animation-name: fadein;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+}
+
+.add-game-modal {
+  position: relative;
+  height: 60%;
+  width: 30%;
+  top: 0;
+  left: 0;
+  font-size: var(--font-size-large);
+  background-color: var(--color-gray-mid);
+  padding: 3rem;
+  text-align: center;
+  border-radius: var(--border-radius-main);
+  animation-name: animatetop2;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+  animation-delay: 0s;
+}
+
+.modal h3 {
+  font-weight: var(--font-weight-thin);
+  padding-bottom: 2rem;
+}
+
+.add-game-input {
+  margin: 1rem;
+  width: 90%;
+  font-size: var(--font-size-small);
+  padding: 1.3rem;
+  margin: 0.6rem;
+  border: none;
+  outline: none;
+  border-radius: var(--border-radius-main);
+  box-shadow: var(--shadow-mid);
+}
+
+.add-new-game-button {
+  color: var(--font-color-light);
+  font-size: var(--font-size-small);
+  padding: 1rem 3rem;
+  margin: 2rem 0 7rem 7rem;
+  background-color: var(--accent-color-main);
+  border: none;
+  border-radius: var(--border-radius-main);
+  box-shadow: var(--shadow-mid);
+  transition: all var(--standard-transition-speed);
+  cursor: pointer;
+}
+
+.add-new-game-button:hover {
+  background-color: var(--accent-color-highlight);
+}
+
+.game-beaten-checkbox {
+  height: 3rem;
+  width: 3rem;
+  cursor: pointer;
+}
+
+.close-modal-button {
+  position: absolute;
+  font-size: var(--font-size-mid);
+  color: var(--font-color-light);
+  background-color: var(--accent-color-main);
+  border: none;
+  height: 4rem;
+  width: 4.5rem;
+  border-radius: var(--border-radius-main);
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  transition: all var(--standard-transition-speed);
+}
+
+.close-modal-button:hover {
+  background-color: var(--accent-color-highlight);
+}
+
+.delete-shelf-form {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 1rem;
+}
+
+.delete-shelf-button {
+  font-weight: var(--font-weight-bold);
+  border: none;
+  font-size: var(--font-size-small);
+  background-color: var(--accent-color-main);
+  border-radius: var(--border-radius-main);
+  padding: 1rem;
+  transition: all var(--standard-transition-speed);
+  cursor: pointer;
+}
+
+.delete-shelf-button:hover {
+  background-color: var(--accent-color-highlight);
+}
+
+.open-edit-shelf-button {
+  position: absolute;
+  bottom: 0;
+  left: 14rem;
+  margin: 1rem;
+  font-weight: var(--font-weight-bold);
+  border: none;
+  font-size: var(--font-size-small);
+  background-color: var(--accent-color-main);
+  border-radius: var(--border-radius-main);
+  padding: 1rem;
+  transition: all var(--standard-transition-speed);
+  cursor: pointer;
+}
+
+.open-edit-shelf-button:hover {
+  background-color: var(--accent-color-highlight);
+}
+
+/* Animations */
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 1;
+    padding: 0.5rem 1rem;
+  }
+  to {
+    top: 0;
+    opacity: 0;
+    padding: 0.5rem 3rem;
+  }
+}
+
+@keyframes animatetop2 {
+  from {
+    top: -1000px;
+    /* opacity: 1; */
+  }
+  to {
+    top: 0;
+    /* opacity: 1; */
+  }
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Settings Modal */
+
+.settings-header {
+  padding-top: 1.5rem;
+}
+.settings-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: right;
+  height: 60%;
+  width: 20%;
+  z-index: 1;
+  transition: all var(--standard-transition-speed);
+  animation-name: fadein;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+}
+
+.my-settings-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 3rem;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  font-size: var(--font-size-large);
+  background-color: var(--color-gray-mid);
+  padding: 1rem;
+  text-align: center;
+  border-radius: var(--border-radius-main);
+  animation-name: animatetop2;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+  margin: 5rem 0.3rem 0 0;
+  box-shadow: var(--shadow-dark);
+  border-bottom: 10px solid var(--accent-color-main);
+}
+
+.my-settings-modal h4 {
+  font-size: var(--font-size-large);
+}
+
+.color-button {
+  border: none;
+  height: 4rem;
+  width: 4rem;
+  margin: 0.5rem;
+  border-radius: var(--border-radius-main);
+  cursor: pointer;
+  transition: all var(--standard-transition-speed);
+}
+
+.red-button {
+  background-color: rgb(200, 0, 0);
+}
+
+.red-button:hover {
+  background-color: rgb(230, 0, 0);
+}
+
+.orange-button {
+  background-color: rgb(240, 100, 0);
+}
+
+.orange-button:hover {
+  background-color: rgb(255, 130, 0);
+}
+
+.yellow-button {
+  background-color: rgb(220, 160, 0);
+}
+
+.yellow-button:hover {
+  background-color: rgb(220, 180, 0);
+}
+
+.green-button {
+  background-color: rgb(0, 170, 0);
+}
+
+.green-button:hover {
+  background-color: rgb(0, 200, 0);
+}
+
+.blue-button {
+  background-color: rgb(0, 100, 240);
+}
+
+.blue-button:hover {
+  background-color: rgb(0, 130, 240);
+}
+
+.purple-button {
+  background-color: rgb(160, 0, 240);
+}
+
+.purple-button:hover {
+  background-color: rgb(170, 100, 240);
+}
+
+.edit-shelf-modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all var(--standard-transition-speed);
+  animation-name: fadein;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+}
+
+.edit-shelf-modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 30%;
+  width: 30%;
+  top: 0;
+  left: 0;
+  font-size: var(--font-size-large);
+  background-color: var(--color-gray-mid);
+  text-align: center;
+  border-radius: var(--border-radius-main);
+  animation-name: animatetop2;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+  animation-delay: 0s;
+}
+
+.edit-shelf-modal h3 {
+  font-weight: var(--font-weight-bold);
+}
+
+.close-edit-shelf-modal-button {
+  position: absolute;
+  font-size: var(--font-size-mid);
+  background-color: var(--accent-color-main);
+  border: none;
+  height: 4rem;
+  width: 4.5rem;
+  border-radius: var(--border-radius-main);
+  top: 0;
+  right: 0;
+  transform: translate(30%, -30%);
+  cursor: pointer;
+  transition: all var(--standard-transition-speed);
+}
+
+.close-edit-shelf-modal-button:hover {
+  background-color: var(--accent-color-highlight);
+}
+
+.edit-shelf-input {
+  margin: 1rem;
+  width: 90%;
+  font-size: var(--font-size-small);
+  padding: 1.3rem;
+  border: none;
+  outline: none;
+  border-radius: var(--border-radius-main);
+  box-shadow: var(--shadow-mid);
+}
+
+.edit-shelf-button {
+  font-size: var(--font-size-small);
+  padding: 1rem 3rem;
+  margin-top: 3rem;
+  background-color: var(--accent-color-main);
+  border: none;
+  border-radius: var(--border-radius-main);
+  box-shadow: var(--shadow-mid);
+  transition: all var(--standard-transition-speed);
+  cursor: pointer;
+}
+
+.edit-shelf-button:hover {
+  background-color: var(--accent-color-highlight);
+}
+
+.not-hidden {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}

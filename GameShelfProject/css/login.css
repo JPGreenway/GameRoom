@@ -1,0 +1,165 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* COLORS */
+  /* Grays */
+  --color-gray-light: #444;
+  --color-gray-mid: #333;
+  --color-gray-dark: #222;
+
+  /* Shadows */
+  --shadow-mid: #303030;
+  --shadow-dark: #202020;
+
+  /* Accents */
+  --accent-color-main: #f06400;
+  --accent-color-highlight: #ff8200;
+
+  /* TEXT */
+  /* Font Weight */
+  --font-weight-thin: 200;
+  --font-weight-standard: 400;
+  --font-weight-bold: 700;
+
+  /* Font Color */
+  --font-color-light: #fff;
+  --font-color-mid: #ccc;
+  --font-color-dark: #000;
+
+  /* MISC. STYLING */
+  --border-radius-main: 0.5rem;
+  --standard-transition-speed: 200ms;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--color-gray-dark);
+  color: var(--font-color-mid);
+  font-family: "Raleway", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  user-select: none;
+}
+
+/* These elements need inherit to be set manually */
+input,
+button {
+  font-family: inherit;
+}
+
+.heading-primary {
+  padding: 5rem;
+  font-size: 6vw;
+  font-weight: var(--font-weight-thin);
+  text-align: center;
+  letter-spacing: 1rem;
+}
+
+.container {
+  position: relative;
+  background-color: var(--color-gray-mid);
+  height: 40rem;
+  width: 45rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: var(--border-radius-main);
+  box-shadow: 0 0 1rem var(--shadow-dark);
+}
+
+.heading-secondary {
+  font-size: 4rem;
+  font-weight: var(--font-weight-bold);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.controls {
+  font-size: 1.8rem;
+  padding: 1rem 2rem;
+  border-radius: var(--border-radius-main);
+  border: none;
+}
+
+.input {
+  width: 30rem;
+  margin-bottom: 1.5rem;
+  outline: none;
+  color: var(--font-color-dark);
+}
+
+.button {
+  color: var(--font-color-light);
+  background-color: var(--accent-color-main);
+  transition: all var(--standard-transition-speed);
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: var(--accent-color-highlight);
+}
+
+.go-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0.5rem 1rem;
+  display: flex;
+  color: var(--font-color-light);
+  background-color: var(--accent-color-main);
+  transition: all var(--standard-transition-speed);
+  border-radius: 0.5rem 0 0.5rem 0;
+  cursor: pointer;
+}
+
+.go-back:hover {
+  background-color: var(--accent-color-highlight);
+}
+
+.go-back-icon {
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+.signup-link {
+  font-size: 2.2rem;
+  color: var(--font-color-mid);
+  transition: all var(--standard-transition-speed);
+}
+
+.signup-link:hover {
+  color: var(--font-color-light);
+}
+
+.error-text {
+  font-size: 3rem;
+  padding: 3rem;
+  animation-name: fadein;
+  animation-duration: 0.2s;
+  animation-iteration-count: 1;
+}
+
+/* ANIMATIONS */
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

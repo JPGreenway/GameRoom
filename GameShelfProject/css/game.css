@@ -1,0 +1,313 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* COLORS */
+  /* Grays */
+  --color-gray-light: #444;
+  --color-gray-mid: #333;
+  --color-gray-dark: #222;
+
+  /* Shadows */
+  --shadow-mid: 0 0 10px #303030;
+  --shadow-dark: 0 0 10px #202020;
+
+  /* Accents */
+  --accent-color-main: #333;
+  --accent-color-highlight: #333;
+  --accent-color-transparent: #333;
+
+  /* TEXT */
+  /* Font Weight */
+  --font-weight-thin: 200;
+  --font-weight-standard: 400;
+  --font-weight-bold: 700;
+
+  /* Font Color */
+  --font-color-light: #fff;
+  --font-color-mid: #ccc;
+  --font-color-middark: #aaa;
+  --font-color-dark: #000;
+  /* Font Size */
+  --font-size-small: 1.8rem;
+  --font-size-mid: 2.2rem;
+  --font-size-large: 3rem;
+
+  /* MISC. STYLING */
+  --border-radius-main: 0.5rem;
+  --standard-transition-speed: 200ms;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--color-gray-dark);
+  color: var(--font-color-mid);
+  font-family: "Raleway", sans-serif;
+  font-size: var(--font-size-large);
+  display: flex;
+  justify-content: center;
+  user-select: none;
+  margin-top: 5rem;
+}
+
+/* These elements need inherit to be set manually */
+input,
+button {
+  font-family: inherit;
+}
+
+.game-info-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  margin: 0 5rem;
+  background-color: var(--color-gray-mid);
+  border-radius: var(--border-radius-main);
+}
+
+.game-details {
+  height: 100%;
+  width: 50%;
+  min-width: 40rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: var(--border-radius-main);
+}
+
+.game-details-left {
+  border-left: 10px solid var(--accent-color-main);
+  align-items: center;
+}
+
+.game-details-right {
+  position: relative;
+  margin-bottom: 5rem;
+}
+
+.game-img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 80%;
+  min-width: 35rem;
+  background-color: var(--color-gray-light);
+  border-radius: var(--border-radius-main);
+  box-shadow: var(--shadow-mid);
+}
+.game-img {
+  min-width: 30rem;
+  height: 54rem;
+  object-fit: contain;
+}
+
+.detail-box-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.detail-box {
+  background-color: var(--color-gray-light);
+  font-size: var(--font-size-small);
+  margin: 3rem;
+  padding: 2rem;
+  border-radius: var(--border-radius-main);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all var(--standard-transition-speed);
+}
+
+.detail-box:hover {
+  background-color: var(--accent-color-main);
+}
+
+.detail-box-container h2 {
+  font-size: var(--font-size-small);
+  transform: translateY(-13px);
+}
+
+.game-button-container {
+  width: 100%;
+  display: flex;
+  gap: 3rem;
+}
+
+.game-button {
+  width: 100%;
+  color: var(--font-color-light);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-bold);
+  background-color: var(--accent-color-main);
+  padding: 2rem;
+  border: none;
+  border-radius: var(--border-radius-main);
+  cursor: pointer;
+  transition: all var(--standard-transition-speed);
+}
+
+.game-button:hover {
+  background-color: var(--accent-color-highlight);
+}
+
+.game-details-right h2 {
+  font-size: var(--font-size-small);
+  color: var(--font-color-middark);
+  text-align: center;
+  transform: translateY(40px);
+  padding: 0.5rem;
+}
+
+.game-details-right h3 {
+  padding: 2rem;
+  text-align: center;
+}
+
+.game-details-right div {
+  background-color: var(--color-gray-light);
+  border-radius: var(--border-radius-main);
+  border-left: 10px solid var(--accent-color-main);
+  border-right: 10px solid var(--accent-color-main);
+  transition: all var(--standard-transition-speed);
+}
+
+/* MODAL */
+.edit-game-modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all var(--standard-transition-speed);
+  animation-name: fadein;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+}
+
+.edit-game-modal {
+  position: relative;
+  height: 70%;
+  width: 30%;
+  top: 0;
+  left: 0;
+  background-color: var(--color-gray-mid);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: var(--border-radius-main);
+  animation-name: animatetop2;
+  animation-duration: 0.3s;
+  animation-iteration-count: 1;
+  animation-delay: 0s;
+}
+
+.edit-game-modal h3 {
+  font-weight: var(--font-weight-bold);
+  padding: 3rem;
+}
+
+.edit-game-modal label {
+  font-size: var(--font-size-small);
+}
+
+.modal-checkbox {
+  height: 3rem;
+  width: 3rem;
+  cursor: pointer;
+  margin: 1rem;
+}
+
+.modal-input {
+  width: 97%;
+  font-size: var(--font-size-small);
+  padding: 1rem;
+  margin: 1rem;
+  border: none;
+  outline: none;
+  border-radius: var(--border-radius-main);
+  box-shadow: var(--shadow-mid);
+}
+
+.modal-button {
+  margin: 4rem 0;
+}
+
+/* X Button */
+.x-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--accent-color-main);
+  border: none;
+  cursor: pointer;
+  padding: 1rem;
+  margin: 0.2rem;
+  border-radius: var(--border-radius-main);
+  transition: all var(--standard-transition-speed);
+}
+
+.x-button:hover {
+  background-color: var(--accent-color-highlight);
+}
+
+.x-button-icon {
+  height: 2.4rem;
+  width: 2.4rem;
+  stroke: var(--font-color-light);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 60rem) {
+  .detail-box {
+    width: 100%;
+    margin: 1rem 0;
+    font-size: var(--font-size-small);
+    border-left: 10px solid var(--accent-color-main);
+    border-right: 10px solid var(--accent-color-main);
+  }
+  .game-info-container {
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+  }
+  .game-details-left {
+    border-left: 0px;
+  }
+
+  .game-details-right h2 {
+    transform: translateY(0px);
+    margin-top: 2rem;
+  }
+
+  .detail-box-container {
+    flex-direction: column;
+  }
+
+  .edit-game-modal {
+    height: 80%;
+    width: 97%;
+  }
+}
