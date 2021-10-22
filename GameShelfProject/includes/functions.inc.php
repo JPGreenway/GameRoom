@@ -6,7 +6,7 @@ function checkPasswordMatchesRepeat($pwd, $pwdRepeat) {
 }
 
 function checkEmptyLoginFields($username, $pwd) {
-  return (empty($username) || empty($pwd)); 
+  return ((empty($username) && !is_numeric($username)) || (empty($pwd) && !is_numeric($pwd))); 
 }
 
 function checkEmptySignupFields($username, $pwd, $pwdRepeat) {
